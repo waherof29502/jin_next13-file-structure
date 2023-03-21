@@ -1,0 +1,68 @@
+{
+  "extends": [
+    "next",
+    "next/core-web-vitals",
+    "plugin:@typescript-eslint/recommended",
+    "eslint:recommended",
+    "plugin:prettier/recommended"
+  ],
+  "plugins": ["simple-import-sort", "prettier"],
+  "globals": {
+    "React": "readonly"
+  },
+
+  "rules": {
+    "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+    "react/react-in-jsx-scope": "off",
+    "jsx-a11y/accessible-emoji": "off",
+    "react/no-unescaped-entities": "off",
+    "@next/next/no-page-custom-font": "off",
+    "react/prop-types": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/no-empty-function": "warn",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "jsx-a11y/anchor-is-valid": [
+      "error",
+      {
+        "components": ["Link"],
+        "specialLink": ["hrefLeft", "hrefRight"],
+        "aspects": ["invalidHref", "preferButton"]
+      }
+    ]
+  }
+}
+// {
+//   "extends": [
+//     "next",
+//     "eslint:recommended",
+//     "plugin:@typescript-eslint/recommended",
+//     "next/core-web-vitals",
+//     "plugin:@next/next/recommended",
+//     "plugin:prettier/recommended"
+//   ],
+//   "plugins": ["simple-import-sort", "prettier"],
+//   "globals": {
+//     "React": "readonly"
+//   },
+//   "rules": {
+//     "prettier/prettier": ["error", {}, { "usePrettierrc": true }],
+//     "react/react-in-jsx-scope": "off",
+//     "jsx-a11y/accessible-emoji": "off",
+//     "react/no-unescaped-entities": "off",
+//     "@next/next/no-page-custom-font": "off",
+//     "react/prop-types": "off",
+//     "@typescript-eslint/explicit-function-return-type": "off",
+//     "@typescript-eslint/no-empty-function": "warn",
+//     "simple-import-sort/imports": "error",
+//     "simple-import-sort/exports": "error",
+//     "jsx-a11y/anchor-is-valid": [
+//       "error",
+//       {
+//         "components": ["Link"],
+//         "specialLink": ["hrefLeft", "hrefRight"],
+//         "aspects": ["invalidHref", "preferButton"]
+//       }
+//     ]
+//   }
+// }
