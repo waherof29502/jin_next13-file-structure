@@ -1,8 +1,9 @@
+import { SiteFooter } from '@/components/layouts/SiteFooter';
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
   return (
-    <>
-      <nav>About NavBar</nav>
-      <main>{children}</main>
-    </>
+    <div className="relative flex min-h-screen flex-col">
+      <main className="flex-1">{children}</main>
+      <SiteFooter />
+    </div>
   );
 }
