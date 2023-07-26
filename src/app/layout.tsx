@@ -2,7 +2,9 @@ import '@/styles/globals.css';
 
 import React from 'react';
 
+import { SiteFooter } from '@/components/layouts/SiteFooter';
 import { ThemeProvider } from '@/components/ThemeProvider';
+import { Toaster } from '@/components/ui/toaster';
 import { fontMono, fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 export const metadata = {
@@ -20,7 +22,9 @@ export default function RootLayout({ children }: RootLayoutProps) {
       <body className={cn('min-h-screen bg-background font-sans antialiased', fontSans.variable, fontMono.variable)}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           {children}
+          <SiteFooter />
         </ThemeProvider>
+        <Toaster />
       </body>
     </html>
   );
