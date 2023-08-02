@@ -1,6 +1,6 @@
+import NavBar from '@/components/Navbar/navbar';
 import Link from 'next/link';
 
-import NavBar from '@/components/Navbar/navbar';
 interface LobbyLayoutProps {
   children: React.ReactNode;
 }
