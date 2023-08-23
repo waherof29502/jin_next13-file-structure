@@ -21,12 +21,6 @@ export default async function LobbyLayout({ children }: LobbyLayoutProps) {
             123
           </a>
           {' on '}
-          <a
-            href="https://unsplash.com/photos/OS2WODdxy1A?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
-            className="hover:underline"
-          >
-            Unsplash
-          </a>
         </div>
 
         <main className="container absolute top-1/2 col-span-1 flex -translate-y-1/2 items-center md:static md:top-0 md:col-span-2 md:flex md:translate-y-0 lg:col-span-1">

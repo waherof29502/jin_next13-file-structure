@@ -1,4 +1,5 @@
 import '@/styles/globals.css';
+import { Providers } from '@/components/providers';
 import { fontMono, fontMontserrat, fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
 import React from 'react';
@@ -20,7 +21,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           fontMono.variable
         )}
       >
-        {children}
+        <Providers attribute="class" defaultTheme="system" enableSystem>
+          {children}
+        </Providers>
       </body>
     </html>
   );
