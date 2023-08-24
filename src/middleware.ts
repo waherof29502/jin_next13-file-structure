@@ -1,28 +1,20 @@
+import { authMiddleware } from '@clerk/nextjs';
 import { NextResponse } from 'next/server';
 
 const allowedOrigins =
   process.env.NODE_ENV === 'production' ? ['https://www.yoursite.com', 'www.yoursite.com'] : ['http://localhost:3000'];
 
-export function middleware(request: Request) {
-  const origin = request.headers.get('origin');
-  console.log(origin);
-  if (origin && !allowedOrigins.includes(origin)) {
-    return new NextResponse(null, {
-      status: 400,
-      statusText: 'Bad Request',
-      headers: {
-        'Content-Type': 'text/plain'
-      }
-    });
-  }
+// Resource: https://clerk.com/docs/nextjs/middleware#auth-middleware
+// Copy the middleware code as it is from the above resource
 
-  console.log('middleware!');
-  console.log(request.method);
-  console.log(request.url);
+export default authMiddleware({
+  // An array of public routes that don't require authentication.
+  publicRoutes: ['/', '/signin(.*)'],
 
-  return NextResponse.next();
-}
+  // An array of routes to be ignored by the authentication middleware.
+  ignoredRoutes: ['/api/webhook/clerk']
+});
 
 export const config = {
-  matcher: '/api/(.*)'
+  matcher: ['/((?!.*\\..*|_next).*)', '/', '/(api|trpc)(.*)']
 };

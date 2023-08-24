@@ -2,6 +2,7 @@ import '@/styles/globals.css';
 import { Providers } from '@/components/providers';
 import { fontMono, fontMontserrat, fontSans } from '@/lib/fonts';
 import { cn } from '@/lib/utils';
+import { ClerkProvider } from '@clerk/nextjs';
 import React from 'react';
 
 export const metadata = {
@@ -11,20 +12,22 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head />
-      <body
-        className={cn(
-          'bg-background min-h-screen font-sans antialiased',
-          fontSans.variable,
-          fontMontserrat.variable,
-          fontMono.variable
-        )}
-      >
-        <Providers attribute="class" defaultTheme="system" enableSystem>
-          {children}
-        </Providers>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en" suppressHydrationWarning>
+        <head />
+        <body
+          className={cn(
+            'bg-background min-h-screen font-sans antialiased',
+            fontSans.variable,
+            fontMontserrat.variable,
+            fontMono.variable
+          )}
+        >
+          <Providers attribute="class" defaultTheme="system" enableSystem>
+            {children}
+          </Providers>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
