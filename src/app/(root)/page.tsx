@@ -1,3 +1,6 @@
+import FormWithReactHookForm from '@/components/form/form-with-react-hook-form';
+import FormWithReactHookFormAndZodAndServer from '@/components/form/form-with-rhf-and-zod-and-server.tsx';
+import FormWithoutReactHookForm from '@/components/form/form-without-react-hook-form';
 import { Shell } from '@/components/shells/shell';
 
 export default async function IndexPage() {
@@ -8,7 +11,7 @@ export default async function IndexPage() {
         aria-labelledby="hero-heading"
         className="mx-auto flex w-full max-w-[64rem] flex-col items-center justify-center gap-4 pb-8 pt-6 text-center md:pb-12 md:pt-10 lg:py-28"
       >
-        12
+        <FormWithReactHookFormAndZodAndServer />
       </section>
     </Shell>
   );

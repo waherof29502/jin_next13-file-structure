@@ -66,9 +66,9 @@ export function Combobox() {
         <Icons.search className="h-4 w-4 xl:mr-2" aria-hidden="true" />
         <span className="hidden xl:inline-flex">Search products...</span>
         <span className="sr-only">Search products</span>
-        <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 xl:flex">
+        {/* <kbd className="pointer-events-none absolute right-1.5 top-2 hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 xl:flex">
           <abbr title={isMacOs() ? 'Command' : 'Control'}>{isMacOs() ? '⌘' : 'Ctrl+'}</abbr>K
-        </kbd>
+        </kbd> */}
       </Button>
       <CommandDialog position="top" open={isOpen} onOpenChange={setIsOpen}>
         <CommandInput placeholder="Search products..." value={query} onValueChange={setQuery} />

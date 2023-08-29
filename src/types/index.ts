@@ -1,4 +1,6 @@
 import { type Icons } from '@/components/icons';
+import { signUpSchema } from '@/lib/validations/auth';
+import { type z } from 'zod';
 
 export interface NavItem {
   title: string;
@@ -27,3 +29,5 @@ export interface FooterItem {
   }[];
 }
 export type MainNavItem = NavItemWithOptionalChildren;
+
+export type TSignUpSchema = z.infer<typeof signUpSchema>;
