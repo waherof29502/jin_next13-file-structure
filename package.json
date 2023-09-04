@@ -33,7 +33,6 @@
     "@commitlint/config-conventional": "^17.4.4",
     "@commitlint/cz-commitlint": "^17.3.0",
     "@next/eslint-plugin-next": "^13.2.4",
-    "@stylelint/postcss-css-in-js": "^0.38.0",
     "@typescript-eslint/eslint-plugin": "^5.47.0",
     "@typescript-eslint/parser": "^5.47.0",
     "cz-conventional-changelog": "^3.3.0",

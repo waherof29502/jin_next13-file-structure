@@ -1,19 +1,11 @@
 {
-  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier", "stylelint-config-styled-components"],
+  "extends": ["stylelint-config-standard-scss", "stylelint-config-prettier"],
   "overrides": [
     {
       "files": ["**/*.scss"],
       "customSyntax": "postcss-scss",
       "rules": {
         "at-rule-no-unknown": null
-      }
-    },
-    {
-      "files": ["**/*.{ts,tsx}"],
-      "customSyntax": "@stylelint/postcss-css-in-js",
-      "rules": {
-        "at-rule-no-unknown": null,
-        "scss/operator-no-unspaced": null
       }
     }
   ],
