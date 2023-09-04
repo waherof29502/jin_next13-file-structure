@@ -9,7 +9,7 @@ const allowedOrigins =
 
 export default authMiddleware({
   // An array of public routes that don't require authentication.
-  publicRoutes: ['/', '/signin(.*)'],
+  publicRoutes: ['/', '/sign-up(.*)', '/sign-in(.*)'],
 
   // An array of routes to be ignored by the authentication middleware.
   ignoredRoutes: ['/api/webhook/clerk']
