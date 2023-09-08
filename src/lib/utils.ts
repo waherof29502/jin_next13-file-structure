@@ -1,3 +1,4 @@
+import type { User } from '@clerk/nextjs/server';
 import { clsx, type ClassValue } from 'clsx';
 import { twMerge } from 'tailwind-merge';
 
@@ -20,4 +21,9 @@ export function isMacOs() {
   if (typeof window === 'undefined') return false;
 
   return window.navigator.userAgent.includes('Mac');
+}
+export function getUserEmail(user: User | null) {
+  const email = user?.emailAddresses?.find((e) => e.id === user.primaryEmailAddressId)?.emailAddress ?? '';
+
+  return email;
 }
