@@ -1,28 +1,30 @@
+// Ref: https://next-auth.js.org/configuration/nextjs#advanced-usage
+import { NextRequestWithAuth, withAuth } from 'next-auth/middleware';
 import { NextResponse } from 'next/server';
 
-const allowedOrigins =
-  process.env.NODE_ENV === 'production' ? ['https://www.yoursite.com', 'www.yoursite.com'] : ['http://localhost:3000'];
-
-export function middleware(request: Request) {
-  const origin = request.headers.get('origin');
-  console.log(origin);
-  if (origin && !allowedOrigins.includes(origin)) {
-    return new NextResponse(null, {
-      status: 400,
-      statusText: 'Bad Request',
-      headers: {
-        'Content-Type': 'text/plain'
-      }
-    });
+export default withAuth(
+  // `withAuth` augments your `Request` with the user's token.
+  function middleware(request: NextRequestWithAuth) {
+    // console.log(request.nextUrl.pathname)
+    // console.log(request.nextauth.token)
+    // if (request.nextUrl.pathname.startsWith('/extra') && request.nextauth.token?.role !== 'admin') {
+    //   return NextResponse.rewrite(new URL('/denied', request.url));
+    // }
+    // if (
+    //   request.nextUrl.pathname.startsWith('/client') &&
+    //   request.nextauth.token?.role !== 'admin' &&
+    //   request.nextauth.token?.role !== 'manager'
+    // ) {
+    //   return NextResponse.rewrite(new URL('/denied', request.url));
+    // }
+  },
+  {
+    callbacks: {
+      authorized: ({ token }) => !!token
+    }
   }
+);
 
-  console.log('middleware!');
-  console.log(request.method);
-  console.log(request.url);
-
-  return NextResponse.next();
-}
-
-export const config = {
-  matcher: '/api/(.*)'
-};
+// Applies next-auth only to matching routes - can be regex
+// Ref: https://nextjs.org/docs/app/building-your-application/routing/middleware#matcher
+export const config = { matcher: ['/', '/sign-in'] };
