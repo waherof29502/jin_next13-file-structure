@@ -1,6 +1,6 @@
-import FormWithReactHookForm from '@/components/form/form-with-react-hook-form';
-import FormWithReactHookFormAndZodAndServer from '@/components/form/form-with-rhf-and-zod-and-server.tsx';
-import FormWithoutReactHookForm from '@/components/form/form-without-react-hook-form';
+import FormWithReactHookForm from '@/components/forms/form-with-react-hook-form';
+import FormWithReactHookFormAndZodAndServer from '@/components/forms/form-with-rhf-and-zod-and-server';
+import FormWithoutReactHookForm from '@/components/forms/form-without-react-hook-form';
 import { Shell } from '@/components/shells/shell';
 
 export default async function IndexPage() {

@@ -1,5 +1,5 @@
 import { type Icons } from '@/components/icons';
-import { signUpSchema } from '@/lib/validations/auth';
+import { signUpSchema, type userPrivateMetadataSchema } from '@/lib/validations/auth';
 import { type z } from 'zod';
 
 export interface NavItem {
@@ -31,3 +31,4 @@ export interface FooterItem {
 export type MainNavItem = NavItemWithOptionalChildren;
 
 export type TSignUpSchema = z.infer<typeof signUpSchema>;
+export type UserRole = z.infer<typeof userPrivateMetadataSchema.shape.role>;
