@@ -37,6 +37,7 @@ export function SignInForm() {
         identifier: data.email,
         password: data.password
       });
+      console.log('result', result);
 
       if (result.status === 'complete') {
         await setActive({ session: result.createdSessionId });
