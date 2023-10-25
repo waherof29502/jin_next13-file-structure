@@ -8,10 +8,9 @@ import * as React from 'react';
 
 export function Providers({ children, ...props }: ThemeProviderProps) {
   return (
-    <SessionProvider>
-      <NextThemesProvider {...props}>
-        <TooltipProvider>{children}</TooltipProvider>
-      </NextThemesProvider>
-    </SessionProvider>
+    <NextThemesProvider {...props}>
+      <TooltipProvider>{children}</TooltipProvider>
+    </NextThemesProvider>
   );
 }
+export { SessionProvider };

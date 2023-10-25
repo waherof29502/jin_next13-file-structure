@@ -6,9 +6,10 @@ import { Button } from '@/components/ui/button';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { authSchema } from '@/lib/validations/auth';
-// import { useSignIn } from '@clerk/nextjs';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useRouter } from 'next/navigation';
+// import { useSignIn } from '@clerk/nextjs';
+import { signIn, SignInResponse } from 'next-auth/react';
+import { useRouter, useSearchParams } from 'next/navigation';
 import * as React from 'react';
 import { useForm } from 'react-hook-form';
 import type { z } from 'zod';
@@ -17,8 +18,12 @@ type Inputs = z.infer<typeof authSchema>;
 
 export function SignInForm() {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const callbackUrl = searchParams.get('callbackUrl') || '/';
+  // const error = searchParams.get('error') ? 'no cre' : '';
   //   const { isLoaded, signIn, setActive } = useSignIn();
   const [isPending, startTransition] = React.useTransition();
+  const [error, setError] = React.useState<string>('');
 
   // react-hook-form
   const form = useForm<Inputs>({
@@ -29,7 +34,23 @@ export function SignInForm() {
     }
   });
 
-  async function onSubmit(data: Inputs) {
+  const onSubmit = async (data: Inputs) => {
+    try {
+      const res: SignInResponse | undefined = await signIn('credentials', {
+        redirect: false,
+        username: data.email,
+        password: data.password,
+        callbackUrl
+      });
+      console.log('res', res);
+      if (!res?.error) {
+        router.push('/');
+      } else {
+        setError('Invalid email or password');
+      }
+    } catch (err: any) {
+      console.log('err', err);
+    }
     // if (!isLoaded) return;
     // try {
     //   const result = await signIn.create({
@@ -46,7 +67,7 @@ export function SignInForm() {
     // } catch (err) {
     //   catchClerkError(err);
     // }
-  }
+  };
 
   return (
     <Form {...form}>
@@ -58,7 +79,7 @@ export function SignInForm() {
             <FormItem>
               <FormLabel>Email</FormLabel>
               <FormControl>
-                <Input placeholder="rodneymullen180@gmail.com" {...field} />
+                <Input placeholder="rodneymullen180@gmail.com" autoComplete="username" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -71,12 +92,13 @@ export function SignInForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <PasswordInput placeholder="**********" {...field} />
+                <PasswordInput placeholder="**********" autoComplete="current-password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
+        <h1>{error}</h1>
         <Button disabled={isPending}>
           {isPending && <Icons.spinner className="mr-2 h-4 w-4 animate-spin" aria-hidden="true" />}
           Sign in

@@ -1,5 +1,6 @@
-import SignInForm from '@/components/forms/custom-signin-form';
+// import SignInForm from '@/components/forms/custom-signin-form';
 import FormWithReactHookFormAndZodAndServer from '@/components/forms/form-with-rhf-and-zod-and-server';
+import { SignInForm } from '@/components/forms/signin-form';
 import { Shell } from '@/components/shells/shell';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 // import { SignIn } from '@clerk/nextjs';
@@ -24,7 +25,8 @@ export default function SignInPage() {
             </div>
           </div>
           <div className="w-full p-4">
-            <FormWithReactHookFormAndZodAndServer />
+            {/* <FormWithReactHookFormAndZodAndServer /> */}
+            <SignInForm />
           </div>
         </CardContent>
         <CardFooter className="flex flex-wrap items-center justify-between gap-2">
